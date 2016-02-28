@@ -44,7 +44,8 @@ gc=GoodreadsClient(API_KEY,API_SECRET,OAUTH_TOKEN,OAUTH_SECRET)
 #gc.addBookShelf("Tiririca")
 #gc.addBookReview('280111','This is too much for my stomach...','1','Tiririca')
 
-gc.findBook('Groovy','2')
+#gc.findBook('Groovy','2')
+gc.addQuote('Eric Gamma','1','Os caes ladram e a caravana abana as rodas, dirirara...','','9780201485370')
 
 #gc.getUserFollowers('25570848')
 #gc.getUserInfo('25570848')

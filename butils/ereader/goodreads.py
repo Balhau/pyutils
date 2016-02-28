@@ -51,25 +51,33 @@ class GoodreadsClient():
     return response,self.respToDic(content)
 
   def getUserFollowers(self, idUser):
-    body = ''
     response,content= self.client.request('%s/user/%s/followers?format=xml' % (self.base_url,idUser), 'GET', '')
     return response,self.respToDic(content)
 
   def getUserFollowing(self, idUser):
-    body = ''
     response,content= self.client.request('%s/user/%s/following?format=xml' % (self.base_url,idUser), 'GET', '')
     return response,self.respToDic(content)
 
   def getUserInfo(self,idUser):
-    body = ''
     response,content= self.client.request('%s/user/show/%s.xml' % (self.base_url,idUser), 'GET', '')
     return response,self.respToDic(content)
 
   def findBook(self,query,page):
-    body = ''
     response,content= self.client.request('%s/search/index.xml?q=%s&page=%s' % (self.base_url,query,page), 'GET', '')
     print response,content
     return response,self.respToDic(content)
+
+  def recentMembersReviews(self):
+    response,content = self.client.request('%s/review/recent_reviews.xml' % self.base_url, 'GET','')
+    print response,content
+    return response,self.respToDic(content)
+
+  def addQuote(self,author_name,book_id,quote,comma_separated_tags,isbn):
+    body = urllib.urlencode({'quote[author_name]' : author_name, 'quote[book_id]' : book_id, 'quote[body]' : quote, 'quote[tags]' : comma_separated_tags,'isbn':isbn})
+    response,content = self.client.request('%s/quotes?format=xml' % self.base_url, 'POST', body,self.headers)
+    print response,content
+    return response,self.respToDic(content)
+
 
 
   def respToDic(self,content,data_format='xml'):
