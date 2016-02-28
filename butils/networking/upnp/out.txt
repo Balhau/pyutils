@@ -1,0 +1,95 @@
+{'USN': ' uuid:060b7353-fca6-4070-85f4-1fbfb9add62c::upnp:rootdevice', 'SERVER': ' ipos/7.0 UPnP/1.0 TL-WR740N/1.0/2.0', 'EXT': '', 'LOCATION': ' http://192.168.1.1:1900/igd.xml', 'CACHE-CONTROL': ' max-age=100', 'DATE': ' Fri, 26 Dec 2014 02:38:22 GMT', 'ST': ' upnp:rootdevice'}
+****************************
+{'USN': ' uuid:060b7353-fca6-4070-85f4-1fbfb9add62c', 'SERVER': ' ipos/7.0 UPnP/1.0 TL-WR740N/1.0/2.0', 'EXT': '', 'LOCATION': ' http://192.168.1.1:1900/igd.xml', 'CACHE-CONTROL': ' max-age=100', 'DATE': ' Fri, 26 Dec 2014 02:38:22 GMT', 'ST': ' uuid:060b7353-fca6-4070-85f4-1fbfb9add62c'}
+****************************
+{'USN': ' uuid:060b7353-fca6-4070-85f4-1fbfb9add62c::urn:schemas-upnp-org:device:InternetGatewayDevice:1', 'SERVER': ' ipos/7.0 UPnP/1.0 TL-WR740N/1.0/2.0', 'EXT': '', 'LOCATION': ' http://192.168.1.1:1900/igd.xml', 'CACHE-CONTROL': ' max-age=100', 'DATE': ' Fri, 26 Dec 2014 02:38:22 GMT', 'ST': ' urn:schemas-upnp-org:device:InternetGatewayDevice:1'}
+****************************
+{'USN': ' uuid:060b7353-fca6-4070-85f4-1fbfb9add62c::urn:schemas-upnp-org:service:Layer3Forwarding:1', 'SERVER': ' ipos/7.0 UPnP/1.0 TL-WR740N/1.0/2.0', 'EXT': '', 'LOCATION': ' http://192.168.1.1:1900/igd.xml', 'CACHE-CONTROL': ' max-age=100', 'DATE': ' Fri, 26 Dec 2014 02:38:22 GMT', 'ST': ' urn:schemas-upnp-org:service:Layer3Forwarding:1'}
+****************************
+{'USN': ' uuid:254e9977-8964-49f3-b8d5-51acb7bd40fc', 'SERVER': ' ipos/7.0 UPnP/1.0 TL-WR740N/1.0/2.0', 'EXT': '', 'LOCATION': ' http://192.168.1.1:1900/igd.xml', 'CACHE-CONTROL': ' max-age=100', 'DATE': ' Fri, 26 Dec 2014 02:38:22 GMT', 'ST': ' uuid:254e9977-8964-49f3-b8d5-51acb7bd40fc'}
+****************************
+{'USN': ' uuid:254e9977-8964-49f3-b8d5-51acb7bd40fc::urn:schemas-upnp-org:device:WANDevice:1', 'SERVER': ' ipos/7.0 UPnP/1.0 TL-WR740N/1.0/2.0', 'EXT': '', 'LOCATION': ' http://192.168.1.1:1900/igd.xml', 'CACHE-CONTROL': ' max-age=100', 'DATE': ' Fri, 26 Dec 2014 02:38:22 GMT', 'ST': ' urn:schemas-upnp-org:device:WANDevice:1'}
+****************************
+{'USN': ' uuid:254e9977-8964-49f3-b8d5-51acb7bd40fc::urn:schemas-upnp-org:service:WANCommonInterfaceConfig:1', 'SERVER': ' ipos/7.0 UPnP/1.0 TL-WR740N/1.0/2.0', 'EXT': '', 'LOCATION': ' http://192.168.1.1:1900/igd.xml', 'CACHE-CONTROL': ' max-age=100', 'DATE': ' Fri, 26 Dec 2014 02:38:22 GMT', 'ST': ' urn:schemas-upnp-org:service:WANCommonInterfaceConfig:1'}
+****************************
+{'USN': ' uuid:9f0865b3-f5da-4ad5-85b7-7404637fdf37', 'SERVER': ' ipos/7.0 UPnP/1.0 TL-WR740N/1.0/2.0', 'EXT': '', 'LOCATION': ' http://192.168.1.1:1900/igd.xml', 'CACHE-CONTROL': ' max-age=100', 'DATE': ' Fri, 26 Dec 2014 02:38:22 GMT', 'ST': ' uuid:9f0865b3-f5da-4ad5-85b7-7404637fdf37'}
+****************************
+{'USN': ' uuid:9f0865b3-f5da-4ad5-85b7-7404637fdf37::urn:schemas-upnp-org:device:WANConnectionDevice:1', 'SERVER': ' ipos/7.0 UPnP/1.0 TL-WR740N/1.0/2.0', 'EXT': '', 'LOCATION': ' http://192.168.1.1:1900/igd.xml', 'CACHE-CONTROL': ' max-age=100', 'DATE': ' Fri, 26 Dec 2014 02:38:22 GMT', 'ST': ' urn:schemas-upnp-org:device:WANConnectionDevice:1'}
+****************************
+{'USN': ' uuid:9f0865b3-f5da-4ad5-85b7-7404637fdf37::urn:schemas-upnp-org:service:WANIPConnection:1', 'SERVER': ' ipos/7.0 UPnP/1.0 TL-WR740N/1.0/2.0', 'EXT': '', 'LOCATION': ' http://192.168.1.1:1900/igd.xml', 'CACHE-CONTROL': ' max-age=100', 'DATE': ' Fri, 26 Dec 2014 02:38:23 GMT', 'ST': ' urn:schemas-upnp-org:service:WANIPConnection:1'}
+****************************
+{'USN': ' uuid:565aa949-67c1-4c0e-aa8f-f349e6f59311', 'SERVER': ' ipos/7.0 UPnP/1.0 TL-WR740N/1.0/2.0', 'EXT': '', 'LOCATION': ' http://192.168.1.1:1900/igd.xml', 'CACHE-CONTROL': ' max-age=100', 'DATE': ' Fri, 26 Dec 2014 02:38:23 GMT', 'ST': ' uuid:565aa949-67c1-4c0e-aa8f-f349e6f59311'}
+****************************
+{'USN': ' uuid:565aa949-67c1-4c0e-aa8f-f349e6f59311::urn:schemas-wifialliance-org:device:WFADevice:1', 'SERVER': ' ipos/7.0 UPnP/1.0 TL-WR740N/1.0/2.0', 'EXT': '', 'LOCATION': ' http://192.168.1.1:1900/igd.xml', 'CACHE-CONTROL': ' max-age=100', 'DATE': ' Fri, 26 Dec 2014 02:38:23 GMT', 'ST': ' urn:schemas-wifialliance-org:device:WFADevice:1'}
+****************************
+{'USN': ' uuid:565aa949-67c1-4c0e-aa8f-f349e6f59311::urn:schemas-wifialliance-org:service:WFAWLANConfig:1', 'SERVER': ' ipos/7.0 UPnP/1.0 TL-WR740N/1.0/2.0', 'EXT': '', 'LOCATION': ' http://192.168.1.1:1900/igd.xml', 'CACHE-CONTROL': ' max-age=100', 'DATE': ' Fri, 26 Dec 2014 02:38:23 GMT', 'ST': ' urn:schemas-wifialliance-org:service:WFAWLANConfig:1'}
+****************************
+{'USN': ' uuid:060b7353-fca6-4070-85f4-1fbfb9add62c::upnp:rootdevice', 'NTS': ' ssdp:alive', 'SERVER': ' ipos/7.0 UPnP/1.0 TL-WR740N/1.0/2.0', 'HOST': ' 239.255.255.250:1900', 'LOCATION': ' http://192.168.1.1:1900/igd.xml', 'CACHE-CONTROL': ' max-age=100', 'NT': ' upnp:rootdevice'}
+****************************
+{'USN': ' uuid:060b7353-fca6-4070-85f4-1fbfb9add62c', 'NTS': ' ssdp:alive', 'SERVER': ' ipos/7.0 UPnP/1.0 TL-WR740N/1.0/2.0', 'HOST': ' 239.255.255.250:1900', 'LOCATION': ' http://192.168.1.1:1900/igd.xml', 'CACHE-CONTROL': ' max-age=100', 'NT': ' uuid:060b7353-fca6-4070-85f4-1fbfb9add62c'}
+****************************
+{'USN': ' uuid:060b7353-fca6-4070-85f4-1fbfb9add62c::urn:schemas-upnp-org:device:InternetGatewayDevice:1', 'NTS': ' ssdp:alive', 'SERVER': ' ipos/7.0 UPnP/1.0 TL-WR740N/1.0/2.0', 'HOST': ' 239.255.255.250:1900', 'LOCATION': ' http://192.168.1.1:1900/igd.xml', 'CACHE-CONTROL': ' max-age=100', 'NT': ' urn:schemas-upnp-org:device:InternetGatewayDevice:1'}
+****************************
+{'USN': ' uuid:060b7353-fca6-4070-85f4-1fbfb9add62c::urn:schemas-upnp-org:service:Layer3Forwarding:1', 'NTS': ' ssdp:alive', 'SERVER': ' ipos/7.0 UPnP/1.0 TL-WR740N/1.0/2.0', 'HOST': ' 239.255.255.250:1900', 'LOCATION': ' http://192.168.1.1:1900/igd.xml', 'CACHE-CONTROL': ' max-age=100', 'NT': ' urn:schemas-upnp-org:service:Layer3Forwarding:1'}
+****************************
+{'USN': ' uuid:254e9977-8964-49f3-b8d5-51acb7bd40fc', 'NTS': ' ssdp:alive', 'SERVER': ' ipos/7.0 UPnP/1.0 TL-WR740N/1.0/2.0', 'HOST': ' 239.255.255.250:1900', 'LOCATION': ' http://192.168.1.1:1900/igd.xml', 'CACHE-CONTROL': ' max-age=100', 'NT': ' uuid:254e9977-8964-49f3-b8d5-51acb7bd40fc'}
+****************************
+{'USN': ' uuid:254e9977-8964-49f3-b8d5-51acb7bd40fc::urn:schemas-upnp-org:device:WANDevice:1', 'NTS': ' ssdp:alive', 'SERVER': ' ipos/7.0 UPnP/1.0 TL-WR740N/1.0/2.0', 'HOST': ' 239.255.255.250:1900', 'LOCATION': ' http://192.168.1.1:1900/igd.xml', 'CACHE-CONTROL': ' max-age=100', 'NT': ' urn:schemas-upnp-org:device:WANDevice:1'}
+****************************
+{'USN': ' uuid:254e9977-8964-49f3-b8d5-51acb7bd40fc::urn:schemas-upnp-org:service:WANCommonInterfaceConfig:1', 'NTS': ' ssdp:alive', 'SERVER': ' ipos/7.0 UPnP/1.0 TL-WR740N/1.0/2.0', 'HOST': ' 239.255.255.250:1900', 'LOCATION': ' http://192.168.1.1:1900/igd.xml', 'CACHE-CONTROL': ' max-age=100', 'NT': ' urn:schemas-upnp-org:service:WANCommonInterfaceConfig:1'}
+****************************
+{'USN': ' uuid:9f0865b3-f5da-4ad5-85b7-7404637fdf37::urn:schemas-upnp-org:service:WANIPConnection:1', 'NTS': ' ssdp:alive', 'SERVER': ' ipos/7.0 UPnP/1.0 TL-WR740N/1.0/2.0', 'HOST': ' 239.255.255.250:1900', 'LOCATION': ' http://192.168.1.1:1900/igd.xml', 'CACHE-CONTROL': ' max-age=100', 'NT': ' urn:schemas-upnp-org:service:WANIPConnection:1'}
+****************************
+{'USN': ' uuid:565aa949-67c1-4c0e-aa8f-f349e6f59311', 'NTS': ' ssdp:alive', 'SERVER': ' ipos/7.0 UPnP/1.0 TL-WR740N/1.0/2.0', 'HOST': ' 239.255.255.250:1900', 'LOCATION': ' http://192.168.1.1:1900/igd.xml', 'CACHE-CONTROL': ' max-age=100', 'NT': ' uuid:565aa949-67c1-4c0e-aa8f-f349e6f59311'}
+****************************
+{'USN': ' uuid:565aa949-67c1-4c0e-aa8f-f349e6f59311::urn:schemas-wifialliance-org:device:WFADevice:1', 'NTS': ' ssdp:alive', 'SERVER': ' ipos/7.0 UPnP/1.0 TL-WR740N/1.0/2.0', 'HOST': ' 239.255.255.250:1900', 'LOCATION': ' http://192.168.1.1:1900/igd.xml', 'CACHE-CONTROL': ' max-age=100', 'NT': ' urn:schemas-wifialliance-org:device:WFADevice:1'}
+****************************
+{'USN': ' uuid:565aa949-67c1-4c0e-aa8f-f349e6f59311::urn:schemas-wifialliance-org:service:WFAWLANConfig:1', 'NTS': ' ssdp:alive', 'SERVER': ' ipos/7.0 UPnP/1.0 TL-WR740N/1.0/2.0', 'HOST': ' 239.255.255.250:1900', 'LOCATION': ' http://192.168.1.1:1900/igd.xml', 'CACHE-CONTROL': ' max-age=100', 'NT': ' urn:schemas-wifialliance-org:service:WFAWLANConfig:1'}
+****************************
+<service>
+<servicetype>urn:schemas-upnp-org:service:Layer3Forwarding:1</servicetype>
+<serviceid>urn:upnp-org:serviceId:L3Forwarding1</serviceid>
+<controlurl>/l3f</controlurl>
+<eventsuburl>/l3f</eventsuburl>
+<scpdurl>/l3f.xml</scpdurl>
+</service>
+<service>
+<servicetype>urn:schemas-upnp-org:service:WANCommonInterfaceConfig:1</servicetype>
+<serviceid>urn:upnp-org:serviceId:WANCommonIFC1</serviceid>
+<controlurl>/ifc</controlurl>
+<eventsuburl>/ifc</eventsuburl>
+<scpdurl>/ifc.xml</scpdurl>
+</service>
+<service>
+<servicetype>urn:schemas-upnp-org:service:WANIPConnection:1</servicetype>
+<serviceid>urn:upnp-org:serviceId:WANIPConn1</serviceid>
+<controlurl>/ipc</controlurl>
+<eventsuburl>/ipc</eventsuburl>
+<scpdurl>/ipc.xml</scpdurl>
+</service>
+<service>
+<servicetype>urn:schemas-wifialliance-org:service:WFAWLANConfig:1</servicetype>
+<serviceid>urn:wifialliance-org:serviceId:WFAWLANConfig1</serviceid>
+<controlurl>http://192.168.1.1:1910/WFAWLANConfig/control</controlurl>
+<eventsuburl>http://192.168.1.1:1910/WFAWLANConfig/event</eventsuburl>
+<scpdurl>http://192.168.1.1:1900/wfc.xml</scpdurl>
+</service>
+Posting xml soap command to retrieve the external IP
+Response:  <?xml version="1.0"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+<SOAP-ENV:Body>
+<u:GetExternalIPAddressResponse xmlns:u="urn:schemas-upnp-org:service:WANIPConnection:1"><NewExternalIPAddress>89.155.33.96</NewExternalIPAddress></u:GetExternalIPAddressResponse></SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+89.155.33.96
+Response:  <?xml version="1.0"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+<SOAP-ENV:Body>
+<u:GetGenericPortMappingEntryResponse xmlns:u="urn:schemas-upnp-org:service:WANIPConnection:1"><NewRemoteHost></NewRemoteHost><NewExternalPort>51413</NewExternalPort><NewProtocol>TCP</NewProtocol><NewInternalPort>51413</NewInternalPort><NewInternalClient>192.168.1.169</NewInternalClient><NewEnabled>1</NewEnabled><NewPortMappingDescription>Transmission at 51413</NewPortMappingDescription><NewLeaseDuration>0</NewLeaseDuration></u:GetGenericPortMappingEntryResponse></SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+
+Remote Host:  None
+Internal Host:  192.168.1.169
+Description:  Transmission at 51413
+External Port:  51413
+Internal Port:  51413
