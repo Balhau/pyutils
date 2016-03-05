@@ -15,11 +15,11 @@ class GoodreadsClient():
 
   base_url = "https://www.goodreads.com"
 
-'''
-    This is GoodreadsClient constructor and receives four parameters which are all that is needed to do oauth requests
-    To see how you can create a access_token and access_secret check the file goauth.py which is a python script
-    that uses OAuth to create a token request. Then you use that link on the browser to give access to the application after that
-'''
+  '''
+      This is GoodreadsClient constructor and receives four parameters which are all that is needed to do oauth requests
+      To see how you can create a access_token and access_secret check the file goauth.py which is a python script
+      that uses OAuth to create a token request. Then you use that link on the browser to give access to the application after that
+  '''
   def __init__(self, app_key, app_secret,access_token,access_secret):
       """Initialize the client"""
       self.headers = {'content-type': 'application/x-www-form-urlencoded'}
@@ -69,7 +69,7 @@ class GoodreadsClient():
 
   def findBook(self,query,page):
     response,content= self.client.request('%s/search/index.xml?q=%s&page=%s' % (self.base_url,query,page), 'GET', '')
-    print response,content
+    #print response,content
     return response,self.respToDic(content)
 
   def recentMembersReviews(self):
@@ -82,13 +82,11 @@ class GoodreadsClient():
       print response,content
       return response,self.respToDic(content)
 
-  def addQuote(self,author_name,book_id,quote,comma_separated_tags,isbn):
+  def addQuote(self,author_name,book_id,quote,comma_separated_tags='',isbn=''):
     body = urllib.urlencode({'quote[author_name]' : author_name, 'quote[book_id]' : book_id, 'quote[body]' : quote, 'quote[tags]' : comma_separated_tags,'isbn':isbn})
     response,content = self.client.request('%s/quotes?format=xml' % self.base_url, 'POST', body,self.headers)
     print response,content
     return response,self.respToDic(content)
-
-
 
   def respToDic(self,content,data_format='xml'):
     if data_format == 'xml':
