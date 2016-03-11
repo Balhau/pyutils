@@ -27,7 +27,7 @@ class Odissey():
         self.path=path
         self.library = "%s/%s/library" % (self.path,self.system_folder)
         self.annotations = "%s/%s" % (self.path,self.annotation_folder)
-        self.conn = sqlite3.connect(db)
+        self.conn = sqlite3.connect(self.library)
 
     def _getExisting(self,csv_existing):
         existing=[]
@@ -41,7 +41,6 @@ class Odissey():
         at = ET.parse(path)
         root = at.getroot()
         book = path.split("/")[-1].split(".")[0].split(".")[0].split(":")[0].split("-")[0]
-        print book
         a=[]
         for c in root:
             if len(c) == 4 and len(c[2][0]):
@@ -55,11 +54,12 @@ class Odissey():
         for d in dirs:
             if len(d[2]) != 0:
                 self._getAnnotationsBook(d[0]+"/"+d[2][0],bookAnnotations)
+        return bookAnnotations
 
     def uploadAnnotations(self,csv_existing):
         existing=self._getExisting(csv_existing)
         c = self.conn.cursor()
-        bookAnnotations = self._getAllAnnotations
+        bookAnnotations = self._getAllAnnotations()
 
         for banno in bookAnnotations:
             author=""
@@ -74,9 +74,10 @@ class Odissey():
                             author=bk['author']['name']
                             #print a.book,"-----", idBook, "-----", author, "----", a.body
                             if a.body in existing:
-                                print 'already on goodreads\n'
-                            else
-                                print 'not on goodreads\n'
+                                #print a.body,'\n\n'
+                                z=1
+                            else:
+                                print a.body,'\n\n'
                             #gc.addQuote(author,idBook,a.body)
                         except:
                             s=1
@@ -84,6 +85,13 @@ class Odissey():
                     else:
                         print "Not found: ","?????????????????",a.book
 
+
+cardPath = '/home/vitorfernandes/Documents/ereader/card'
+
+cb=Odissey(cardPath)
+cb.uploadAnnotations('quotes.csv')
+
+'''
 db = '/home/vitorfernandes/Documents/ereader/card/system/library'
 annotation = '/home/vitorfernandes/Documents/ereader/card/Annotations/Baron-Cohen, Simon/Science of Evil_ On Empathy and the Origins of Cruelty, The - Simon Baron-Cohen.epub.annot'
 
@@ -132,7 +140,7 @@ print len(bookAnnotations)
 
 
 
-'''
+
 Add annotation found in books!
 
 for banno in bookAnnotations:

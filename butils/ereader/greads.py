@@ -42,11 +42,12 @@ gc=GoodreadsClient(API_KEY,API_SECRET,OAUTH_TOKEN,OAUTH_SECRET)
 
 
 #print gc.userStats()
-
+'''
 with open('quotes.csv','rb') as quotes_file:
     quotes_reader = csv.reader(quotes_file,delimiter=',')
     for quote in quotes_reader:
-        print quote[4],'\n\n'
+        print "ola"#quote[4],'\n\n'
+'''
 
 #gc.addBookShelf("Tiririca")
 #gc.addBookReview('280111','This is too much for my stomach...','1','Tiririca')
