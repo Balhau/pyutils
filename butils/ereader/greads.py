@@ -1,12 +1,14 @@
 from goodreads import *
 import oauth2 as oauth
 import urllib
+import csv
 
-API_KEY="APP_KEY"
-API_SECRET="API_SECRET"
+API_KEY="cf2Z3socJtT9qnlbjxTNw"
+API_SECRET="1pSjMkE3tgrHmXdfT3wgpk7vFdYUsdU19t4NoyBg1BA"
 
-OAUTH_TOKEN="OAUTH_TOKEN"
-OAUTH_SECRET="OAUTH_SECRET"
+OAUTH_TOKEN="1nApzFhQPdb9gFox9llDKw"
+OAUTH_SECRET="bP8k8IK0kHRnqOlVXQKWa4xzvDqBvv7FhO4Pq5m3DI"
+
 
 
 #print gc.session.get("review.xml")
@@ -19,7 +21,6 @@ token = oauth.Token(OAUTH_TOKEN,
 
 client = oauth.Client(consumer, token)
 url = 'http://www.goodreads.com'
-
 
 #body = urllib.urlencode({'name': 'read', 'book_id': '1'})
 #headers = {'content-type': 'application/x-www-form-urlencoded'}
@@ -39,13 +40,19 @@ url = 'http://www.goodreads.com'
 
 gc=GoodreadsClient(API_KEY,API_SECRET,OAUTH_TOKEN,OAUTH_SECRET)
 
+
 #print gc.userStats()
+
+with open('quotes.csv','rb') as quotes_file:
+    quotes_reader = csv.reader(quotes_file,delimiter=',')
+    for quote in quotes_reader:
+        print quote[4],'\n\n'
 
 #gc.addBookShelf("Tiririca")
 #gc.addBookReview('280111','This is too much for my stomach...','1','Tiririca')
-
-#gc.findBook('Groovy','2')
-gc.addQuote('Eric Gamma','1','Os caes ladram e a caravana abana as rodas, dirirara...','','9780201485370')
+#gc.findBook('JavaScript Application Design_ A Build First Approach - Nicolas Bevacqua','1')
+#gc.addQuote('Eric Gamma','1','Os caes ladram e a caravana abana as rodas, dirirara...','','9780201485370')
+#gc.getFriendsUpdate()
 
 #gc.getUserFollowers('25570848')
 #gc.getUserInfo('25570848')
