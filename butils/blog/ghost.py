@@ -87,7 +87,7 @@ class GhostBlog():
         info=self._getBlogInfo()
         blog_title=info['title']
         language=info['defaultLang']
-        ebook=createEbook(blog_title,blog_title,language,astring)
+        ebook=createEbook(blog_title,blog_title,language,[astring])
         entries = self._getBlogEntries()
         for e in entries:
             date=strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime(e['date']))
