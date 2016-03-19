@@ -78,7 +78,7 @@ class GhostBlog():
             entries.append({'title':e[0],'html':e[1],'date':e[2],"author":auth})
         return entries
 
-    def toEpub(self,path='.'):
+    def toEpub(self,path):
         spine=['nav']
         authors=self._getAuthors()
         astring = ""
@@ -94,19 +94,7 @@ class GhostBlog():
             data="<h1>"+e['title']+"</h1>"+e['html']+"<p><b>"+date+"</b></p>"
             addEntry(ebook,e['title'],language,data,spine)
         addStyle(ebook,spine)
-        epub.write_epub(blog_title+'.epub',ebook,{})
-
-
-
-
-
-
-
-
-
-gb=GhostBlog('ghost-dev.db')
-
-gb.toEpub()
-
-#for k,v in info.iteritems():
-#    print k,v
+        outputPath=blog_title+".epub"
+        if path != None:
+            outputPath=path
+        epub.write_epub(outputPath,ebook,{})
