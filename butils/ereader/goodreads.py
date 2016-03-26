@@ -2,6 +2,17 @@ import xmltodict
 import json
 import oauth2 as oauth
 import urllib
+from urllib import quote_plus
+
+'''
+    Utility function to encode UTF8 data
+'''
+def urlencode_utf8(params):
+    if hasattr(params, 'items'):
+        params = params.items()
+    return '&'.join(
+        (quote_plus(k.encode('utf8'), safe='/') + '=' + quote_plus(v.encode('utf8'), safe='/')
+            for k, v in params))
 
 '''
   Author: Balhau, <balhau@balhau.net>
@@ -14,6 +25,8 @@ import urllib
 class GoodreadsClient():
 
   base_url = "https://www.goodreads.com"
+  consumer = None
+  token = None
 
   '''
       This is GoodreadsClient constructor and receives four parameters which are all that is needed to do oauth requests
@@ -23,13 +36,13 @@ class GoodreadsClient():
   def __init__(self, app_key, app_secret,access_token,access_secret):
       """Initialize the client"""
       self.headers = {'content-type': 'application/x-www-form-urlencoded'}
-      consumer = oauth.Consumer(key=app_key,
+      self.consumer = oauth.Consumer(key=app_key,
                                 secret=app_secret)
 
-      token = oauth.Token(access_token,
+      self.token = oauth.Token(access_token,
                           access_secret)
 
-      self.client = oauth.Client(consumer, token)
+      self.client = oauth.Client(self.consumer, self.token)
 
 
   ''' This will return statistics regarding the user'''
@@ -39,18 +52,18 @@ class GoodreadsClient():
 
 
   def addBookReview(self,idBook,review,rating,shelve='read'):
-    body = urllib.urlencode({'book_id': idBook, 'review[review]': review , 'review[rating]' : rating, 'shelf':shelve})
+    body = urlencode_utf8({'book_id': idBook, 'review[review]': review , 'review[rating]' : rating, 'shelf':shelve})
     response, content = self.client.request('%s/review.xml' % self.base_url, 'POST', body, self.headers)
     print response,content
     return response,self.respToDic(content)
 
   def updateBookReview(self,idBook,review,rating,shelve='read'):
-   body = urllib.urlencode({'book_id': idBook, 'review[review]': review , 'review[rating]' : rating, 'shelf':shelve})
+   body = urlencode_utf8({'book_id': idBook, 'review[review]': review , 'review[rating]' : rating, 'shelf':shelve})
    response, content = self.client.request('%s/review/%s.xml' % (self.base_url,idBook), 'PUT', body, self.headers)
    return response,self.respToDic(content)
 
   def addBookShelf(self,name,exclusive="false",sortable="false",featured="false"):
-    body = urllib.urlencode({'user_shelf[name]': name, 'user_shelf[exclusive_flag]': exclusive , 'user_shelf[sortable_flag]' : sortable, 'user_shelf[featured]':featured})
+    body = urlencode_utf8({'user_shelf[name]': name, 'user_shelf[exclusive_flag]': exclusive , 'user_shelf[sortable_flag]' : sortable, 'user_shelf[featured]':featured})
     response,content= self.client.request('%s/user_shelves.xml' % self.base_url, 'POST', body, self.headers)
     print response,content
     return response,self.respToDic(content)
@@ -83,7 +96,8 @@ class GoodreadsClient():
       return response,self.respToDic(content)
 
   def addQuote(self,author_name,book_id,quote,comma_separated_tags='',isbn=''):
-    body = urllib.urlencode({'quote[author_name]' : author_name, 'quote[book_id]' : book_id, 'quote[body]' : quote, 'quote[tags]' : comma_separated_tags,'isbn':isbn})
+    #body = urllib.urlencode({'quote[author_name]' : author_name, 'quote[book_id]' : book_id, 'quote[body]' : quote, 'quote[tags]' : comma_separated_tags,'isbn':isbn},encoding='UTF-8')
+    body=urlencode_utf8({'quote[author_name]' : author_name, 'quote[book_id]' : book_id, 'quote[body]' : quote, 'quote[tags]' : comma_separated_tags,'isbn':isbn})
     response,content = self.client.request('%s/quotes?format=xml' % self.base_url, 'POST', body,self.headers)
     print response,content
     return response,self.respToDic(content)

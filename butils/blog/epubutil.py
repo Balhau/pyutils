@@ -1,5 +1,8 @@
 from ebooklib import epub
 
+'''
+    Bunch of common epub routines to use in each of the exporter mechanisms
+'''
 
 def createEbook(idEbook,ebookTitle,lang,authors):
 

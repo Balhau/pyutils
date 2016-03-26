@@ -1,8 +1,15 @@
 import sqlite3
 import os
 import xml.etree.ElementTree as ET
-from greads import *
+#from greads import *
+from goodreads import *
 import csv
+
+API_KEY="cf2Z3socJtT9qnlbjxTNw"
+API_SECRET="1pSjMkE3tgrHmXdfT3wgpk7vFdYUsdU19t4NoyBg1BA"
+
+OAUTH_TOKEN="1nApzFhQPdb9gFox9llDKw"
+OAUTH_SECRET="bP8k8IK0kHRnqOlVXQKWa4xzvDqBvv7FhO4Pq5m3DI"
 
 class Annotation:
 
@@ -60,8 +67,10 @@ class Odissey():
         existing=self._getExisting(csv_existing)
         c = self.conn.cursor()
         bookAnnotations = self._getAllAnnotations()
+        anot = 0
 
         for banno in bookAnnotations:
+            gc=GoodreadsClient(API_KEY,API_SECRET,OAUTH_TOKEN,OAUTH_SECRET)
             author=""
             if len(banno) != 0:
                 books=gc.findBook(banno[0].book,'1')
@@ -72,18 +81,17 @@ class Odissey():
                             bk=books[1]['GoodreadsResponse']['search']['results']['work'][0]['best_book']
                             idBook=bk['id']['#text']
                             author=bk['author']['name']
+                            qbody=a.body.strip().replace("/"," /")
                             #print a.book,"-----", idBook, "-----", author, "----", a.body
-                            if a.body in existing:
-                                #print a.body,'\n\n'
-                                z=1
-                            else:
-                                print a.body,'\n\n'
-                            #gc.addQuote(author,idBook,a.body)
+                            if qbody not in existing:
+                                anot+=1
+                                gc.addQuote(author,idBook,qbody)
                         except:
                             s=1
                             #print a.book,"-----","Error"
                     else:
                         print "Not found: ","?????????????????",a.book
+        print "ANOT: ",anot
 
 
 cardPath = '/home/vitorfernandes/Documents/ereader/card'

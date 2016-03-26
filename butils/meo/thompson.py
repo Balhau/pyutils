@@ -1,6 +1,7 @@
 '''
 Created on 8 de Nov de 2012
 Cracker para passwords thompson..
+http://lixei.me/algoritmo-chaves-wireless-thomson-meo/
 @author: balhau
 '''
 
@@ -44,5 +45,5 @@ def genHashes(name):
                 m.digest()
                 sha1=m.hexdigest()
                 f.write(sha1+"\n")
-                
-genHashes("hashes.dat")        
+
+genHashes("hashes.dat")

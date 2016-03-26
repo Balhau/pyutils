@@ -11,11 +11,11 @@ pname="butils"
 
 current_dir=os.path.dirname(__file__)
 
-with codecs.open(os.path.join(current_dir,'README.txt'),'r','utf8') as readme_file:
+with codecs.open(os.path.join(current_dir,'README.md'),'r','utf8') as readme_file:
 		long_description=readme_file.read()
 
 setup(	name='butils',
-	version='1.0',
+	version='1.0.10',
 	url='https://git.balhau.net/',
 	license='MIT License',
 	description='A bunch of utility scripts with balhau hacks',
