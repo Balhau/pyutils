@@ -12,9 +12,11 @@ EBOOK_NAME="Gamma Dreams Book"
 class Wordpress:
 
     def __init__(self,blogHost,ebookName,language='en',authors=['Author Name']):
-        self.bloghost=bloghost
-        self.ebookName
+        self.bloghost=blogHost
+        self.ebookName=ebookName
         self.language=language
+        self.authors=authors
+        self.spine=['nav']
 
     def getDoc(self,pageNum):
         try:
@@ -32,12 +34,12 @@ class Wordpress:
             return False
 
     def toEpub(self,path):
-        ebook=createEbook(self.ebookName,self.ebookName,self.language,)
+        ebook=createEbook(self.ebookName,self.ebookName,self.language,self.authors)
         UNTITLED=1
         pages=[]
 
         pageNum=1
-        soupObject=getDoc(pageNum)
+        soupObject=self.getDoc(pageNum)
 
         #print "Extracting data from blog"
         while self.checkIfIsValidPage(soupObject):
@@ -57,13 +59,18 @@ class Wordpress:
                         title = "Entry: "+str(UNTITLED)
                         UNTITLED+=1
                     title=title.strip()
-                    sys.stdout.flush()
+                    #sys.stdout.flush()
                     content=str(article).decode('utf-8')
-                    c1 = epub.EpubHtml(title=title, file_name=title+'.xhtml', lang='pt')
-                    c1.content=content
-                    ebook.add_item(c1)
-                    ebook.toc = ebook.toc + [epub.Link(title+'.xhtml', title, title)]
-                    spine.append(c1)
+                    addEntry(ebook,title,language,content,self.spine)
+
+        addStyle(ebook,self.spine)
+
+        #Write the epub
+        outputPath=self.ebookName+".epub"
+        if path != None:
+            outputPath=path
+        epub.write_epub(outputPath,ebook,{})
+
 
 
 
@@ -92,7 +99,7 @@ def createEbook(idEbook,ebookTitle,lang,authors):
 #Post
 #print articles[0].find_all('div')[1].get_text()
 
-
+'''
 ebook=createEbook("gammaDreamsBook",'Gamma Dreams Blog','pt',['Balhau'])
 
 spine=['nav']
@@ -146,3 +153,4 @@ epub.write_epub(EBOOK_NAME+'.epub', ebook, {})
 
 #articles=doc.find_all("article")
 #for article in articles:
+'''

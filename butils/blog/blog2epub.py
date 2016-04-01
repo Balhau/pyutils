@@ -39,9 +39,14 @@ def main():
             help='This is the name that will be assigned for the file that will be generated.')
 
         parser.add_argument('-n','--name',
-            help='This is the name of the blog, it is mandatory for blogger and worpress but not used in ghost blogs\
-            since it is auto detected in this last case. It will be the field used for the title of the ebook in the\
+            help='This is the name of the blog, it is mandatory for blogger and worpress but not used in ghost blogs \
+            since it is auto detected in this last case. It will be the field used for the title of the ebook in the \
             final output file'
+        )
+
+        parser.add_argument('-l','--language',
+            help='Epub file needs to set a language to help ereaders and other devices to decode in the most proper way the \
+            epub file'
         )
 
         args = parser.parse_args()
@@ -58,6 +63,12 @@ def main():
         #Process wordpress request
         if args.blog == 'wordpress':
             print "process wordpress"
+            auths=args.authors.split(",")
+            lang=args.language
+            blogHost=args.url
+            ebookName=args.name
+            wp=Wordpress(blogHost,ebookName,language=lang,authors=auths)
+            wp.toEpub(ebookName)
 
 
         print args
