@@ -28,7 +28,7 @@ class Wordpress:
 
     def checkIfIsValidPage(self,soupObject):
         try:
-            len(so.find_all("article"))
+            len(soupObject.find_all("article"))
             return True
         except:
             return False
@@ -61,7 +61,7 @@ class Wordpress:
                     title=title.strip()
                     #sys.stdout.flush()
                     content=str(article).decode('utf-8')
-                    addEntry(ebook,title,language,content,self.spine)
+                    addEntry(ebook,title,self.language,content,self.spine)
 
         addStyle(ebook,self.spine)
 
