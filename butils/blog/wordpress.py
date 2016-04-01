@@ -1,19 +1,71 @@
 from bs4 import BeautifulSoup
 from ebooklib import epub
+from epubutil import *
 import sys
-
 import urllib2
+
 
 BLOG_HOST='https://blog.balhau.net/'
 EBOOK_NAME="Gamma Dreams Book"
 
-def getDoc(pageNum):
-    try:
-        pageUrl='{}?paged={}'.format(BLOG_HOST,str(pageNum))
-        page=urllib2.urlopen(pageUrl)
-        return BeautifulSoup(page, 'html.parser')
-    except:
-        return []
+
+class Wordpress:
+
+    def __init__(self,blogHost,ebookName,language='en',authors=['Author Name']):
+        self.bloghost=bloghost
+        self.ebookName
+        self.language=language
+
+    def getDoc(self,pageNum):
+        try:
+            pageUrl='{}?paged={}'.format(self.bloghost,str(pageNum))
+            page=urllib2.urlopen(pageUrl)
+            return BeautifulSoup(page, 'html.parser')
+        except:
+            return []
+
+    def checkIfIsValidPage(self,soupObject):
+        try:
+            len(so.find_all("article"))
+            return True
+        except:
+            return False
+
+    def toEpub(self,path):
+        ebook=createEbook(self.ebookName,self.ebookName,self.language,)
+        UNTITLED=1
+        pages=[]
+
+        pageNum=1
+        soupObject=getDoc(pageNum)
+
+        #print "Extracting data from blog"
+        while self.checkIfIsValidPage(soupObject):
+            pages.append(soupObject.find_all('article'))
+            pageNum+=1
+            soupObject=self.getDoc(pageNum)
+
+
+        #print "Converting into epub"
+        for page in reversed(pages):
+            #Flatten article
+            for article in reversed(page):
+                #Parse data if article valid
+                if article != None:
+                    title=article.header.h1.get_text()
+                    if title == None or title.strip() == '':
+                        title = "Entry: "+str(UNTITLED)
+                        UNTITLED+=1
+                    title=title.strip()
+                    sys.stdout.flush()
+                    content=str(article).decode('utf-8')
+                    c1 = epub.EpubHtml(title=title, file_name=title+'.xhtml', lang='pt')
+                    c1.content=content
+                    ebook.add_item(c1)
+                    ebook.toc = ebook.toc + [epub.Link(title+'.xhtml', title, title)]
+                    spine.append(c1)
+
+
 
 def parseArticles(articles):
     return 1
@@ -32,12 +84,6 @@ def createEbook(idEbook,ebookTitle,lang,authors):
 
     return book
 
-def checkIfIsValidPage(soupObject):
-    try:
-        len(soupObject.find_all("article"))
-        return True
-    except:
-        return False
 
 #articles=doc.find_all("article")
 

@@ -38,8 +38,11 @@ class Blogspot():
             content=header+entry['content']['$t']
             addEntry(self.ebook,spine,self.language,content,spine)
 
-    def toEpub(self,):
+    def toEpub(self,path):
+        outputPath=self.title+".epub"
         spine=['nav']
         self._processEntries(self._getBloggerData(),spine)
         addStyle(self.ebook,spine)
-        epub.write_epub(self.title+'.epub',ebook,{})
+        if path != None:
+            outputPath=path
+        epub.write_epub(outputPath,ebook,{})

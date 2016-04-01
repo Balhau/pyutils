@@ -3,6 +3,8 @@
 import sys
 import argparse
 from ghost import *
+from blogger import *
+from wordpress import *
 
 '''
 This is a executable python file, it should provide a shell API for operations regarding blog exporting features
