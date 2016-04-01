@@ -15,7 +15,7 @@ def main():
         This script will enable you to export your blog into epub. For now several blog engines are supported.
         Namely blogspot, wordpress, and ghost.
 
-        
+
         Examples:
 
             To extract a wordpress blog into an epub you use, for example, the following
@@ -25,6 +25,7 @@ def main():
                 ./blog2epub.py -b ghost -d ghost-dev.db -o codeCorner.epub
 
             To extract a blogger blog into an epub you use, for example, the following
+                ./blog2epub.py -b blogger -n poetaasvezes -a "Aurora" -l pt
     '''
 
     GHOST='ghost'
@@ -83,7 +84,15 @@ def main():
 
         #Process blogger request
         if args.blog == 'blogger':
-            print "Process blogger"
+            if args.name != None and args.language != None and args.authors != None:
+                print "Processing blogger ", args.name
+                output = args.name +".epub"
+                if args.output != None:
+                    output = args.output
+                auths=args.authors.split(",")
+                bl=Blogspot(args.name,args.language,auths)
+                bl.toEpub(output)
+
 
         #Process wordpress request
         if args.blog == 'wordpress':
