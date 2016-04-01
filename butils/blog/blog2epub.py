@@ -12,10 +12,19 @@ This is a executable python file, it should provide a shell API for operations r
 def main():
 
     DESCRIPTION='''
-        This script will enable you to export your blog into epub. For now several blog engines are supported. Namely blogspot, wordpress, and ghost
+        This script will enable you to export your blog into epub. For now several blog engines are supported.
+        Namely blogspot, wordpress, and ghost.
+
+        
         Examples:
+
             To extract a wordpress blog into an epub you use, for example, the following
                 ./blog2epub.py -b wordpress -l pt  -a "Balhau" -u "https://blog.balhau.net/" -n "Blog do Balhau.epub"
+
+            To extract a ghost blog into an epub you use, for example, the following
+                ./blog2epub.py -b ghost -d ghost-dev.db -o codeCorner.epub
+
+            To extract a blogger blog into an epub you use, for example, the following
     '''
 
     GHOST='ghost'
@@ -68,6 +77,7 @@ def main():
 
         if args.blog == 'ghost':
             if args.database != None and args.output != None:
+                print "Extracting ghost database entries from ", args.database, " into ", args.output
                 gh=GhostBlog(args.database)
                 gh.toEpub(args.output)
 
@@ -85,8 +95,6 @@ def main():
             wp=Wordpress(blogHost,ebookName,language=lang,authors=auths)
             wp.toEpub(ebookName)
 
-
-        print args
     except Exception as ex:
         print ex.message
         sys.exit(2)
