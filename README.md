@@ -20,3 +20,11 @@ This was an initial idea of scrapping public services to automate analysis and i
 ## Ereader
 
 I have an Ereader. Yes I'm capable of reading stuff, who would say!? So it turns out that my ereader is a [Cybook Ocean](https://www.bookeen.com/en/cybook-ocean) a very nice 8 inch ereader that sucks in terms of software and integration with other platforms. I'm a tech guy who also happens to use [Goodreads](https://www.goodreads.com/) to keep track of my reading status. It also happens that the integration between these two worlds is practically non existent so I decide to give it a help and try to mitigate this serious failure. The initial idea would be to use some goodreads API and do only the SQLite extraction of data and inject it in goodreads with one of the *given APIs*. It turns out that I didn't like any of them, [more on this subject here](https://codecorner.balhau.net/2016/02/28/goodreads-api/), and by this reason I decided also to implement my own goodreads API which is under the file goodreads.py.
+
+## Installation
+
+To install this package in your system you just need to run
+
+    sudo pip install butils --extra-index-url http://pip.balhau.net/simple
+
+This command line will fetch the last version from my local pip repository.
