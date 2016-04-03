@@ -39,7 +39,7 @@ sid=harray[len(harray)-2].split("Set-Cookie:")[1]
 
 #Get quotes in csv
 opener = urllib2.build_opener()
-opener.addheaders.append(('Cookie', '_session_id2=fbef491ea7eaf23af000b6fe40199f45'))
+opener.addheaders.append(('Cookie', sid))
 f = opener.open("https://www.goodreads.com/quotes/goodreads_quotes_export.csv")
 
 print f.read()
