@@ -3,6 +3,7 @@ import xmltodict
 import json
 import oauth2 as oauth
 import urllib
+import urlparse
 from urllib import quote_plus
 import urllib2
 from bs4 import BeautifulSoup
@@ -111,6 +112,45 @@ class GoodreadsClient():
         return data_dict
     elif data_format == 'json':
         return json.loads(content)
+
+  def generateOAuthToken(self,apiKey,apiSecret):
+      url = 'http://www.goodreads.com'
+      request_token_url = '%s/oauth/request_token' % url
+      url = 'http://www.goodreads.com'
+      authorize_url = '%s/oauth/authorize' % url
+      access_token_url = '%s/oauth/access_token' % url
+
+      consumer = oauth.Consumer(key=apiKey,
+                                secret=apiSecret)
+
+      client = oauth.Client(consumer)
+
+      response, content = client.request(request_token_url, 'GET')
+      if response['status'] != '200':
+          raise Exception('Invalid response: %s, content: ' % response['status'] + content)
+
+      request_token = dict(urlparse.parse_qsl(content))
+
+      authorize_link = '%s?oauth_token=%s' % (authorize_url,
+                                              request_token['oauth_token'])
+      print "Use a browser to visit this link and accept your application:"
+      print authorize_link
+      accepted = 'n'
+
+      while accepted.lower() == 'n':
+          # you need to access the authorize_link via a browser,
+          # and proceed to manually authorize the consumer
+          accepted = raw_input('Have you authorized me? (y/n) ')
+
+      token = oauth.Token(request_token['oauth_token'],
+                          request_token['oauth_token_secret'])
+
+      client = oauth.Client(consumer, token)
+      response, content = client.request(access_token_url, 'POST')
+      if response['status'] != '200':
+          raise Exception('Invalid response: %s' % response['status'])
+
+      return dict(urlparse.parse_qsl(content))
 
   '''
   This will fetch the csv with all the existing quotes in your account

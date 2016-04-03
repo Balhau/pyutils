@@ -10,4 +10,7 @@ OAUTH_SECRET="bP8k8IK0kHRnqOlVXQKWa4xzvDqBvv7FhO4Pq5m3DI"
 
 gc=GoodreadsClient(API_KEY,API_SECRET,OAUTH_TOKEN,OAUTH_SECRET)
 
+#print gc.generateOAuthToken(API_KEY,API_SECRET)
+
 print gc.getCSVQuotes("balhau@balhau.net","gamma-007")
+#print gc.getFriendsUpdate()
