@@ -20,10 +20,10 @@ forms=soup.find_all('form')
 auth_token=forms[0].find("input", {"name":"authenticity_token"})['value']
 
 values = {'utf8' : '✓',
-          'user[email]' : 'balhau@balhau.net',
+          'user[email]' : 'login',
           'authenticity_token' : auth_token,
           'remember_me' : 'Python',
-          'user[password]' : 'balhau-007'
+          'user[password]' : 'pass'
 }
 
 #Post login, pass
