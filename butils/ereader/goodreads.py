@@ -1,8 +1,11 @@
+# coding=utf-8
 import xmltodict
 import json
 import oauth2 as oauth
 import urllib
 from urllib import quote_plus
+import urllib2
+from bs4 import BeautifulSoup
 
 '''
     Utility function to encode UTF8 data
@@ -108,3 +111,66 @@ class GoodreadsClient():
         return data_dict
     elif data_format == 'json':
         return json.loads(content)
+
+  '''
+  This will fetch the csv with all the existing quotes in your account
+  '''
+  def getCSVQuotes(self,email,password):
+      #get login page
+
+      url = 'https://www.goodreads.com/user/sign_in'
+      req = urllib2.Request(url)
+      res = urllib2.urlopen(req)
+
+      h1s=str(res.info())
+
+      h1=h1s.split("\n")
+      csid=h1[len(h1)-4].split("Set-Cookie: ")[1].split(";")[0]
+      locale=h1[len(h1)-3].split("Set-Cookie: ")[1].split(";")[0]
+      sid=h1[len(h1)-2].split("Set-Cookie: ")[1].split(";")[0]
+
+      htmlLogin=res.read()
+
+      soup = BeautifulSoup(htmlLogin, 'html.parser')
+
+      forms=soup.find_all('form')
+
+      #This is the auth_token
+      auth_token=forms[0].find("input", {"name":"authenticity_token"})['value']
+      num = forms[0].find("input",{"name":"n"})['value']
+
+      headers={
+          "Host" : "www.goodreads.com",
+          "Origin" : "https://www.goodreads.com",
+          "Referer": "https://www.goodreads.com/user/sign_in",
+          "Cookie" : csid+";"+locale+";"+sid+";"
+      }
+
+
+      post = {
+          'utf8' : '✓',
+          'user[email]' : email,
+          'authenticity_token' : auth_token,
+          'remember_me' : 'on',
+          'next' : 'Sign in',
+          'n' : str(num),
+          'user[password]' : password
+      }
+
+      #print post
+
+      #url="http://localhost/lolada"
+      #Post login, pass
+      data = urllib.urlencode(post)
+      req = urllib2.Request(url, data,headers)
+      response = urllib2.urlopen(req)
+      the_page = response.read()
+
+      #Get quotes in csv
+      opener = urllib2.build_opener()
+      opener.addheaders.append(('Cookie', sid))
+      opener.addheaders.append(('Origin','http://www.goodreads.com'))
+      #opener.addheaders.append(('Referer','https://www.goodreads.com'))
+      f = opener.open("https://www.goodreads.com/quotes/goodreads_quotes_export.csv")
+
+      return f.read()

@@ -1,45 +1,13 @@
 # coding=utf-8
-import urllib
-import urllib2
-from bs4 import BeautifulSoup
+from goodreads import *
 
 
-#get login page
+API_KEY="cf2Z3socJtT9qnlbjxTNw"
+API_SECRET="1pSjMkE3tgrHmXdfT3wgpk7vFdYUsdU19t4NoyBg1BA"
 
-url = 'https://www.goodreads.com/user/sign_in?source=home'
-req = urllib2.Request(url)
-res = urllib2.urlopen(req)
+OAUTH_TOKEN="1nApzFhQPdb9gFox9llDKw"
+OAUTH_SECRET="bP8k8IK0kHRnqOlVXQKWa4xzvDqBvv7FhO4Pq5m3DI"
 
-htmlLogin=res.read()
+gc=GoodreadsClient(API_KEY,API_SECRET,OAUTH_TOKEN,OAUTH_SECRET)
 
-soup = BeautifulSoup(htmlLogin, 'html.parser')
-
-forms=soup.find_all('form')
-
-#This is the auth_token
-auth_token=forms[0].find("input", {"name":"authenticity_token"})['value']
-
-values = {'utf8' : '✓',
-          'user[email]' : 'login',
-          'authenticity_token' : auth_token,
-          'remember_me' : 'Python',
-          'user[password]' : 'pass'
-}
-
-#Post login, pass
-data = urllib.urlencode(values)
-req = urllib2.Request(url, data)
-response = urllib2.urlopen(req)
-the_page = response.read()
-
-#Get the session id
-headers=""+str(response.info())
-harray=headers.split("\n")
-sid=harray[len(harray)-2].split("Set-Cookie:")[1]
-
-#Get quotes in csv
-opener = urllib2.build_opener()
-opener.addheaders.append(('Cookie', sid))
-f = opener.open("https://www.goodreads.com/quotes/goodreads_quotes_export.csv")
-
-print f.read()
+print gc.getCSVQuotes("balhau@balhau.net","gamma-007")
