@@ -1,0 +1,129 @@
+#!/usr/bin/env python
+import sys
+import argparse
+import yaml
+import json
+from goodreads import *
+
+'''
+This is a executable python file, it should provide a shell API for operations regarding blog exporting features
+'''
+def main():
+
+    DESCRIPTION='''
+        This script will give serve as an command line interface for the library here developed. It will enable you, in a quick way,
+        to update your goodread account and export data from your ereader database (if you are using cybook reader)
+    '''
+
+
+    try:
+        parser = argparse.ArgumentParser(description=DESCRIPTION,formatter_class=argparse.RawTextHelpFormatter)
+
+        parser.add_argument('-c','--configs',
+        help='''
+        The config file with the needed information. It will hold goodread app keys as well the path for your cybook database as well
+        ''')
+        parser.add_argument('-r','--review',action='store_true',
+        help='''
+        If this flag is on then it means you are working with reviews
+        ''')
+        parser.add_argument('-l','--list',action='store_true',
+        help='''
+        If this flag is on then it means you listing somegthing
+        ''')
+        parser.add_argument('-a','--add',action='store_true',
+        help='''
+        If this flag is on then it means you are adding something
+        ''')
+        parser.add_argument('-u','--user',action='store_true',
+        help='''
+        If this flag is on then you are requesting user operations
+        ''')
+        parser.add_argument('-st','--status',action='store_true',
+        help='''
+        If this flag is on then you are requesting statistics
+        ''')
+        parser.add_argument('-f','--friends',action='store_true',
+        help='''
+        If this flag is on the you are requesting friends operations
+        ''')
+        parser.add_argument('-fl','--followers',action='store_true',
+        help='''
+        If this flag is on the you are requesting followers operations
+        ''')
+        parser.add_argument('-q','--quotes',action='store_true',
+        help='''
+        If this flag is on then you are requesting quotes operations
+        '''
+        )
+        parser.add_argument('-s','--search',action='store_true',
+        help='''
+        If this flag is on the you are searching for someting
+        '''
+        )
+        parser.add_argument('-sh','--shelf',action='store_true',
+        help='''
+        If this flag is on the you are doing shelf operations
+        ''')
+        parser.add_argument('-b','--book',action='store_true',
+        help='''
+        If this flag is on the you are doing book operations
+        ''')
+        parser.add_argument('-e','--ereader',
+        help='''
+        This will hold the ereader identifier.
+            Possible values:
+                cybook
+            Future values:
+                kobo
+        '''
+        )
+
+        args = parser.parse_args()
+        CONFIGS=None
+
+        if args.configs != None:
+            with open(args.configs,'r') as f:
+                CONFIGS = yaml.load(f)
+
+        if CONFIGS != None:
+            GoodreadConfigs=CONFIGS['Goodreads']
+            gc = GoodreadsClient(
+                GoodreadConfigs['APP_KEY'],GoodreadConfigs['APP_SECRET'],
+                GoodreadConfigs['OAUTH_TOKEN'],GoodreadConfigs['OAUTH_SECRET']
+            )
+            if args.review:
+                if args.list:
+                    print "Listing reviews"
+                if args.add:
+                    print "Adding a review"
+            if args.user:
+                if args.status:
+                    if args.list:
+                        print json.dumps(gc.userStats())
+                if args.friends:
+                    if args.list:
+                        print "Listing friends"
+                if args.followers:
+                    if args.list:
+                        print "Listing followers"
+            if args.quotes:
+                if args.list:
+                    print "Listing quotes"
+            if args.shelf:
+                if args.add:
+                    print "Adding a shelf"
+                if args.list:
+                    print "Listing shelfs"
+            if args.book:
+                if args.search:
+                    print "Finding book"
+
+
+
+    except Exception as ex:
+        print ex.message
+        sys.exit(2)
+
+if __name__ == "__main__":
+    main()

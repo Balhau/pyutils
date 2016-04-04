@@ -21,6 +21,32 @@ This was an initial idea of scrapping public services to automate analysis and i
 
 I have an Ereader. Yes I'm capable of reading stuff, who would say!? So it turns out that my ereader is a [Cybook Ocean](https://www.bookeen.com/en/cybook-ocean) a very nice 8 inch ereader that sucks in terms of software and integration with other platforms. I'm a tech guy who also happens to use [Goodreads](https://www.goodreads.com/) to keep track of my reading status. It also happens that the integration between these two worlds is practically non existent so I decide to give it a help and try to mitigate this serious failure. The initial idea would be to use some goodreads API and do only the SQLite extraction of data and inject it in goodreads with one of the *given APIs*. It turns out that I didn't like any of them, [more on this subject here](https://codecorner.balhau.net/2016/02/28/goodreads-api/), and by this reason I decided also to implement my own goodreads API which is under the file goodreads.py.
 
+### Goodreads command line
+
+To ease the use with goodreads API in the shell it was developed a python script that will enable you direct iteraction with the goodreads api and, as soon as it is fully developed will be put under the bin folder to be added to your binary folder during your installation through pip invocation
+
+The goodreads command line script has a description that can be consulted by executing
+
+  goodreads -h
+
+#### OAuth
+The goodreads needs **OAuth** tokens and Application tokens that need to be provided to the script via a *yaml* file you need that, at the moment, has the following structure
+
+    Goodreads:
+      APP_KEY: 'APP_KEY'
+      APP_SECRET:  'APP_SECRET'
+      OAUTH_TOKEN : 'OAUTH_TOKEN'
+      OAUTH_SECRET : 'OAUTH_SECRET'
+
+#### Operations
+
+##### Status Updates
+
+To list the last 100 user status you type
+
+    goodreads -c configs.yaml -u -st -l
+
+where *configs.yaml* has the configurations needed for the script to work. The flag *-u* means that we want user operations, *-st* we want status information and the *-l* means we want to list, in short this commands means *list user status*. The output will be a json with the result of the query, it will inclusively include the *http* communication information because it can be useful in some cases
 
 ## Installation
 
