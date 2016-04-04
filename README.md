@@ -27,7 +27,7 @@ To ease the use with goodreads API in the shell it was developed a python script
 
 The goodreads command line script has a description that can be consulted by executing
 
-  goodreads -h
+    goodreads -h
 
 #### OAuth
 The goodreads needs **OAuth** tokens and Application tokens that need to be provided to the script via a *yaml* file you need that, at the moment, has the following structure
@@ -40,13 +40,21 @@ The goodreads needs **OAuth** tokens and Application tokens that need to be prov
 
 #### Operations
 
-##### Status Updates
+##### Status
 
 To list the last 100 user status you type
 
     goodreads -c configs.yaml -u -st -l
 
 where *configs.yaml* has the configurations needed for the script to work. The flag *-u* means that we want user operations, *-st* we want status information and the *-l* means we want to list, in short this commands means *list user status*. The output will be a json with the result of the query, it will inclusively include the *http* communication information because it can be useful in some cases
+
+##### Review
+
+Adding reviews is also a feature you can exploit with this command line tool, as an example follows a review done to the first book registered in th Goodreads,
+
+    goodreads -c configs.yaml -r -a -d '{"idBook" : "1", "review" : "This is an amazing book. I m just filling up this with keywords because the review has a minimum amount of text you must fill. So, for this reason and this reason only I must fill up space and time with silly and shallow words.", "rating":"4"}'
+
+
 
 ## Installation
 

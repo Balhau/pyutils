@@ -69,6 +69,14 @@ def main():
         help='''
         If this flag is on the you are doing book operations
         ''')
+        parser.add_argument('-rmr','--recentMembersReviews',action='store_true',
+        help='''
+        If this flag is on the you are asking for recent member reviews
+        ''')
+        parser.add_argument('-d','--data',
+        help='''
+        Data you want to append to your operation
+        ''')
         parser.add_argument('-e','--ereader',
         help='''
         This will hold the ereader identifier.
@@ -96,7 +104,12 @@ def main():
                 if args.list:
                     print "Listing reviews"
                 if args.add:
-                    print "Adding a review"
+                    if args.data != None:
+                        d=json.loads(args.data)
+                        #print d['idBook']
+                        #print d['review']
+                        #print d['rating']
+                        print json.dumps(gc.addBookReview(d['idBook'],d['review'],d['rating']))
             if args.user:
                 if args.status:
                     if args.list:
@@ -104,6 +117,8 @@ def main():
                 if args.friends:
                     if args.list:
                         print "Listing friends"
+                    if args.recentMembersReviews:
+                        print json.dumps(gc.recentMembersReviews())
                 if args.followers:
                     if args.list:
                         print "Listing followers"
