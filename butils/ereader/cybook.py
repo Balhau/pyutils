@@ -94,7 +94,8 @@ class Odissey():
         print "ANOT: ",anot
 
 
-cardPath = '/home/vitorfernandes/Documents/ereader/card'
+#cardPath = '/home/vitorfernandes/Documents/ereader/card'
+cardPath = '/media/9016-4EF8'
 
 cb=Odissey(cardPath)
 cb.uploadAnnotations('quotes.csv')
